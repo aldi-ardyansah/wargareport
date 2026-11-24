@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 export default function Review() {
@@ -96,10 +96,10 @@ export default function Review() {
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-(--border-color-gray-light) pt-4">
-              <Link to="/proof" className="flex items-center gap-2 rounded-full border border-(--border-color-gray) px-4 py-2 text-sm font-medium text-(--font-color-black)">
+              <Link to="/user/proof" className="flex items-center gap-2 rounded-full border border-(--border-color-gray) px-4 py-2 text-sm font-medium text-(--font-color-black)">
                 <img src="/icons/i-arrow-left.svg" alt="Icon Arrow Left" />Back
               </Link>
-              <Link to="/receipt" className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-2.5 text-sm font-semibold text-(--font-color-white)">
+              <Link to="/user/receipt" className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-2.5 text-sm font-semibold text-(--font-color-white)">
                 Dispatch Report<img src="/icons/i-arrow-right.svg" alt="Icon Arrow Right" />
               </Link>
             </div>

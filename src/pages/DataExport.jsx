@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 function DataExport() {
@@ -13,11 +13,11 @@ function DataExport() {
             <h1 className="font-['Fraunces'] text-3xl font-semibold text-(--font-color-black) md:text-4xl">Account & Case History</h1>
           </div>
           <div className="flex flex-wrap items-center gap-2 border-b border-(--border-color-gray-light) py-2">
-            <Link to="/list-complaint" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">My complaints</Link>
-            <Link to="/profile" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">Profile</Link>
-            <Link to="/notification-settings" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">Notifications</Link>
-            <Link to="/data-export" className="rounded-full bg-(--bg-color-green) px-3 py-2 text-sm font-semibold text-(--font-color-white) md:px-4">Privacy & data</Link>
-            <Link to="/security" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">Security</Link>
+            <Link to="/user/list-complaint" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">My complaints</Link>
+            <Link to="/user/profile" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">Profile</Link>
+            <Link to="/user/notification-settings" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">Notifications</Link>
+            <Link to="/user/data-export" className="rounded-full bg-(--bg-color-green) px-3 py-2 text-sm font-semibold text-(--font-color-white) md:px-4">Privacy & data</Link>
+            <Link to="/user/security" className="rounded-full px-3 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray) md:px-4">Security</Link>
           </div>
           <div className="flex w-full max-w-2xl flex-col rounded-2xl border border-(--border-color-gray-light) bg-(--bg-color-white) p-4 md:p-6">
             <div className="flex flex-col gap-1">

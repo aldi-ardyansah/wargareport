@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 function Location() {
@@ -76,10 +76,10 @@ function Location() {
               </div>
             </div>
             <div className="flex flex-col justify-between gap-3 border-t border-(--border-color-gray) pt-5 sm:flex-row">
-              <Link className="font-['Public_Sans'] flex items-center justify-center gap-2 rounded-full border border-(--border-color-gray) px-5 py-3 text-sm font-medium text-(--font-color-gray)" to="/topic">
+              <Link className="font-['Public_Sans'] flex items-center justify-center gap-2 rounded-full border border-(--border-color-gray) px-5 py-3 text-sm font-medium text-(--font-color-gray)" to="/user/topic">
                 <img src="/icons/i-arrow-left.svg" alt="Icon Arrow Left" />Back
               </Link>
-              <Link className="font-['Public_Sans'] flex items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-3 text-sm font-semibold text-(--font-color-white)" to="/proof">
+              <Link className="font-['Public_Sans'] flex items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-3 text-sm font-semibold text-(--font-color-white)" to="/user/proof">
                 Continue<img src="/icons/i-arrow-right.svg" alt="Icon Arrow Right" />
               </Link>
             </div>

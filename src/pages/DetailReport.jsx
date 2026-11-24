@@ -174,7 +174,7 @@ function DetailReport() {
                   <p className="text-sm font-semibold text-(--font-color-black)">Hendra Kurniawan</p>
                   <span className="font-['IBM_Plex_Mono'] text-xs leading-relaxed text-(--font-color-gray-light)">Tim Reaksi Cepat PAM JAYA [PAM-JKT-044]</span>
                 </div>
-                <Link className="mt-1 flex items-center justify-center rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-3 py-2.5 text-center text-xs font-semibold text-(--font-color-white) no-underline" to="/topic">Report similar issue nearby</Link>
+                <Link className="mt-1 flex items-center justify-center rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-3 py-2.5 text-center text-xs font-semibold text-(--font-color-white) no-underline" to="/user/topic">Report similar issue nearby</Link>
               </div>
             </aside>
           </div>

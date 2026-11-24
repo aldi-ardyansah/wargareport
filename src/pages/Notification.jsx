@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 function Notification() {

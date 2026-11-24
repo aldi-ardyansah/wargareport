@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 export default function Proof() {
@@ -92,10 +92,10 @@ export default function Proof() {
               </div>
             </div>
             <div className="mt-1 flex flex-wrap items-center justify-between gap-3 border-t border-(--border-color-gray-light) pt-3">
-              <Link to="/location" className="font-['Public_Sans'] flex items-center gap-2 rounded-full border border-(--border-color-gray) px-4 py-2 text-sm font-medium text-(--font-color-black)">
+              <Link to="/user/location" className="font-['Public_Sans'] flex items-center gap-2 rounded-full border border-(--border-color-gray) px-4 py-2 text-sm font-medium text-(--font-color-black)">
                 <img src="/icons/i-arrow-left.svg" alt="Icon Arrow Left" />Back
               </Link>
-              <Link to="/review" className="font-['Public_Sans'] flex items-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-2.5 text-sm font-semibold text-(--font-color-white)">
+              <Link to="/user/review" className="font-['Public_Sans'] flex items-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-2.5 text-sm font-semibold text-(--font-color-white)">
                 Continue<img src="/icons/i-arrow-right.svg" alt="Icon Arrow Right" />
               </Link>
             </div>

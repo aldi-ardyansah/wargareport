@@ -12,10 +12,10 @@ function NavLogin() {
         <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/live-feed">Live Feed</Link>
         <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/track">Track</Link>
         <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/help">How it works</Link>
-        <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/list-complaint">My Reports</Link>
+        <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/user/list-complaint">My Reports</Link>
       </div>
       <div className="flex items-center gap-4">
-        <Link to="/notification">
+        <Link to="/user/notification">
           <img src="/icons/i-notifications.svg" alt="Icon Notifications" />
         </Link>
         <div className="group relative">
@@ -32,7 +32,7 @@ function NavLogin() {
               <span className="font-['Public_Sans'] text-sm font-semibold text-(--font-color-black)">Aldi Ardyansah</span>
               <span className="font-['IBM_Plex_Mono'] text-[10px] text-(--font-color-gray)">aldi@wargareport.id</span>
             </div>
-            <Link to="/list-complaint" className="flex items-center gap-2 px-4 py-3 font-['Public_Sans'] text-xs text-(--font-color-gray) hover:bg-(--bg-color-light-gray) border-b border-(--border-color-gray)">
+            <Link to="/user/list-complaint" className="flex items-center gap-2 px-4 py-3 font-['Public_Sans'] text-xs text-(--font-color-gray) hover:bg-(--bg-color-light-gray) border-b border-(--border-color-gray)">
               <img src="/icons/i-user.svg" alt="" />My Filed Reports
             </Link>
             <Link to="/" className="flex items-center gap-2 px-4 py-3 font-['Public_Sans'] text-xs text-(--font-color-red) hover:bg-(--bg-color-light-red)">
@@ -40,7 +40,7 @@ function NavLogin() {
             </Link>
           </div>
         </div>
-        <Link className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-white" to="/topic">
+        <Link className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-white" to="/user/topic">
           <img src="/icons/i-plus.svg" alt="Icon Plus" />Report an Issue
         </Link>
       </div>

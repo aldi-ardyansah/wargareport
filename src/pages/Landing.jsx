@@ -11,7 +11,7 @@ function Landing() {
           <h1 className="w-full font-['Fraunces'] text-3xl font-semibold text-(--font-color-black) sm:text-4xl md:w-[65%] md:text-5xl">See something broken? Snap it. We push the city to fix it.</h1>
           <p className="max-w-162.5 text-md leading-[1.75] text-(--font-color-gray)">Potholes, dark streetlights, PAM water leaks, or trash piles. Drop photos, track fixes like a food delivery order, and keep authorities accountable.</p>
           <div className="flex flex-wrap items-center gap-3">
-            <Link className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-5 py-3 text-sm font-semibold text-(--font-color-white) sm:px-6" to="/proof">
+            <Link className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-5 py-3 text-sm font-semibold text-(--font-color-white) sm:px-6" to="/user/proof">
               <img src="/icons/i-camera.svg" alt="Icon Camera" />Snap a report<img src="/icons/i-arrow-right.svg" alt="Icon Arrow Right" />
             </Link>
             <Link className="rounded-full border border-(--border-color-gray) bg-(--bg-color-white) px-5 py-3 text-sm font-semibold text-(--font-color-black)" to="/track">Track a case</Link>

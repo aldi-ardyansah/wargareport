@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 export default function Security() {
@@ -13,11 +13,11 @@ export default function Security() {
             <h1 className="font-['Fraunces'] text-3xl font-semibold text-(--font-color-black) sm:text-4xl">Account & Case History</h1>
           </div>
           <div className="flex flex-wrap items-center gap-2 border-b border-(--border-color-gray-light) py-2">
-            <Link to="/list-complaint" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">My complaints</Link>
-            <Link to="/profile" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Profile</Link>
-            <Link to="/notification-settings" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Notifications</Link>
-            <Link to="/data-export" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Privacy & data</Link>
-            <Link to="/security" className="rounded-full bg-(--bg-color-green) px-4 py-2 text-sm font-semibold text-(--font-color-white)">Security</Link>
+            <Link to="/user/list-complaint" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">My complaints</Link>
+            <Link to="/user/profile" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Profile</Link>
+            <Link to="/user/notification-settings" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Notifications</Link>
+            <Link to="/user/data-export" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Privacy & data</Link>
+            <Link to="/user/security" className="rounded-full bg-(--bg-color-green) px-4 py-2 text-sm font-semibold text-(--font-color-white)">Security</Link>
           </div>
           <div className="flex justify-start">
             <div className="w-full max-w-2xl rounded-2xl border border-(--border-color-gray-light) bg-(--bg-color-white) p-4 sm:p-6">

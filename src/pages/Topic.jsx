@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 export default function Topic() {
@@ -118,7 +118,7 @@ export default function Topic() {
             </div>
             <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-(--border-color-gray-light) pt-4">
               <Link to="/live-feed" className="px-4 py-2 text-sm font-semibold text-(--font-color-green)">Cancel</Link>
-              <Link to="/location" className="flex items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-2.5 text-sm font-semibold text-(--font-color-white)">
+              <Link to="/user/location" className="flex items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-2.5 text-sm font-semibold text-(--font-color-white)">
                 Continue<img src="/icons/i-arrow-right.svg" alt="Icon Arrow Right" />
               </Link>
             </div>

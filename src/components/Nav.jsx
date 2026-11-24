@@ -7,7 +7,7 @@ function Nav() {
   const [activeModal, setActiveModal] = useState(null);
 
   return (
-    <>
+    <header>
       <nav className="fixed top-0 z-1000 flex w-full flex-col items-center justify-between gap-2.5 border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3.75 md:flex-row md:px-25">
         <div className="flex items-center gap-2">
           <img src="/icons/logo.svg" alt="Logo" />
@@ -23,7 +23,7 @@ function Nav() {
           <button type="button" onClick={() => setActiveModal("login")} className="flex items-center gap-2 rounded-full border border-none px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-gray)">
             <img src="/icons/i-log-in.svg" alt="Icon Login" />Sign In
           </button>
-          <Link to="/topic" className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-white)">
+          <Link to="/user/topic" className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-white)">
             <img src="/icons/i-plus.svg" alt="Icon Plus" />Report
           </Link>
         </div>
@@ -40,7 +40,7 @@ function Nav() {
         onClose={() => setActiveModal(null)}
         onSwitchToLogin={() => setActiveModal("login")}
       />
-    </>
+    </header>
   )
 }
 

@@ -16,6 +16,9 @@ import NotificationSettings from "./pages/NotificationSettings";
 import Profile from "./pages/Profile";
 import DataExport from "./pages/DataExport";
 import Security from "./pages/Security";
+import EscalationDesk from "./pages/EscalationDesk";
+import SlaBenchmark from "./pages/SlaBenchmark";
+import Categories from "./pages/Categories";
 
 function App() {
   return (
@@ -26,17 +29,20 @@ function App() {
         <Route path="/track" element={<Track />} />
         <Route path="/help" element={<Help />} />
         <Route path="/detail-report" element={<DetailReport />} />
-        <Route path="/list-complaint" element={<ListComplaint />} />
-        <Route path="/topic" element={<Topic />} />
-        <Route path="/location" element={<Location />} />
-        <Route path="/proof" element={<Proof />} />
-        <Route path="/review" element={<Review />} />
-        <Route path="/receipt" element={<Receipt />} />
-        <Route path="/notification" element={<Notification />} />
-        <Route path="/notification-settings" element={<NotificationSettings />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/data-export" element={<DataExport />} />
-        <Route path="/security" element={<Security />} />
+        <Route path="user/list-complaint" element={<ListComplaint />} />
+        <Route path="user/topic" element={<Topic />} />
+        <Route path="user/location" element={<Location />} />
+        <Route path="user/proof" element={<Proof />} />
+        <Route path="user/review" element={<Review />} />
+        <Route path="user/receipt" element={<Receipt />} />
+        <Route path="user/notification" element={<Notification />} />
+        <Route path="user/notification-settings" element={<NotificationSettings />} />
+        <Route path="user/profile" element={<Profile />} />
+        <Route path="user/data-export" element={<DataExport />} />
+        <Route path="user/security" element={<Security />} />
+        <Route path="admin/escalation-desk" element={<EscalationDesk />} />
+        <Route path="admin/sla-benchmark" element={<SlaBenchmark />} />
+        <Route path="admin/categories" element={<Categories />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

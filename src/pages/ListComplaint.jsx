@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavLogin";
+import NavLogin from "../components/NavUser";
 import Footer from "../components/Footer";
 
 function ListComplaint() {
@@ -13,16 +13,16 @@ function ListComplaint() {
             <h1 className="font-['Fraunces'] text-3xl font-semibold text-(--font-color-black) sm:text-4xl">Account & Case History</h1>
           </div>
           <div className="flex flex-wrap items-center gap-2 border-b border-(--border-color-gray-light) py-2">
-            <Link to="/list-complaint" className="rounded-full bg-(--bg-color-green) px-4 py-2 text-sm font-semibold text-(--font-color-white)">My complaints</Link>
-            <Link to="/profile" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Profile</Link>
-            <Link to="/notification-settings" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Notifications</Link>
-            <Link to="/data-export" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Privacy & data</Link>
-            <Link to="/security" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Security</Link>
+            <Link to="/user/list-complaint" className="rounded-full bg-(--bg-color-green) px-4 py-2 text-sm font-semibold text-(--font-color-white)">My complaints</Link>
+            <Link to="/user/profile" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Profile</Link>
+            <Link to="/user/notification-settings" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Notifications</Link>
+            <Link to="/user/data-export" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Privacy & data</Link>
+            <Link to="/user/security" className="rounded-full px-4 py-2 text-sm text-(--font-color-gray) hover:bg-(--bg-color-gray)">Security</Link>
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <span className="font-['IBM_Plex_Mono'] text-xs tracking-wider text-(--font-color-gray-light) sm:text-sm">YOUR TRACKED RECORDS (2)</span>
-              <Link to="/topic" className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 text-xs font-semibold text-(--font-color-white)">
+              <Link to="/user/topic" className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 text-xs font-semibold text-(--font-color-white)">
                 <img src="/icons/i-plus.svg" alt="Icon Plus" />File new complaint
               </Link>
             </div>
