@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -37,6 +37,11 @@ export function AuthProvider({ children }) {
     const savedUser = localStorage.getItem("currentUser");
     return savedUser ? JSON.parse(savedUser) : null;
   });
+  const [justLoggedOut, setJustLoggedOut] = useState(false);
+
+  const resetJustLoggedOut = useCallback(() => {
+    setJustLoggedOut(false);
+  }, []);
 
   function register(userData) {
     const existingUser = users.find(
@@ -79,6 +84,7 @@ export function AuthProvider({ children }) {
     const safeUser = { ...user };
     delete safeUser.password;
 
+    setJustLoggedOut(false);
     setCurrentUser(safeUser);
     localStorage.setItem("currentUser", JSON.stringify(safeUser));
 
@@ -86,6 +92,7 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
+    setJustLoggedOut(true);
     setCurrentUser(null);
     localStorage.removeItem("currentUser");
   }
@@ -160,6 +167,8 @@ export function AuthProvider({ children }) {
       value={{
         users,
         currentUser,
+        justLoggedOut,
+        resetJustLoggedOut,
         register,
         login,
         logout,

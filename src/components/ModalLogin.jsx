@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useAuth } from "../context/useAuth";
 
 function ModalLogin({ isOpen = false, onClose = () => { }, onSwitchToRegister = () => { } }) {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -22,13 +23,15 @@ function ModalLogin({ isOpen = false, onClose = () => { }, onSwitchToRegister = 
       return;
     }
 
+    const target = location.state?.from
+      ? `${location.state.from.pathname}${location.state.from.search}${location.state.from.hash}`
+      : result.user.role === "admin"
+        ? "/admin/escalation-desk"
+        : "/user/topic";
+
     onClose();
 
-    navigate(
-      result.user.role === "admin"
-        ? "/admin/escalation-desk"
-        : "/user/topic"
-    );
+    navigate(target, { replace: true });
   }
 
   return (

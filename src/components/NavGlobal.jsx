@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useAuth } from "../context/useAuth";
 import ModalLogin from "./ModalLogin";
 import ModalRegister from "./ModalRegister";
@@ -9,7 +9,25 @@ import NavAdmin from "./NavAdmin";
 function NavGlobal() {
   const [activeModal, setActiveModal] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { currentUser } = useAuth();
+  const { currentUser, justLoggedOut, resetJustLoggedOut } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isLoginOpen = activeModal === "login" || Boolean(location.state?.from);
+
+  useEffect(() => {
+    if (justLoggedOut) {
+      resetJustLoggedOut();
+    }
+  }, [justLoggedOut, resetJustLoggedOut]);
+
+  function handleCloseModal() {
+    setActiveModal(null);
+
+    if (location.state?.from) {
+      navigate("/", { replace: true, state: null });
+    }
+  }
 
   if (currentUser?.role === "user") {
     return <NavUser />;
@@ -49,8 +67,8 @@ function NavGlobal() {
       </nav>
 
       <ModalLogin
-        isOpen={activeModal === "login"}
-        onClose={() => setActiveModal(null)}
+        isOpen={isLoginOpen}
+        onClose={handleCloseModal}
         onSwitchToRegister={() => setActiveModal("register")}
       />
 

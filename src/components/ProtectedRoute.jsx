@@ -1,11 +1,18 @@
-import { Navigate, Outlet } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 import { useAuth } from "../context/useAuth";
 
 function ProtectedRoute({ allowedRole }) {
-  const { currentUser } = useAuth();
+  const { currentUser, justLoggedOut } = useAuth();
+  const location = useLocation();
 
   if (!currentUser) {
-    return <Navigate to="/" replace />;
+    return (
+      <Navigate
+        to="/"
+        state={justLoggedOut ? null : { from: location }}
+        replace
+      />
+    );
   }
 
   if (currentUser.role !== allowedRole) {

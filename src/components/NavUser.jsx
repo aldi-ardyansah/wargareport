@@ -9,7 +9,7 @@ function NavUser() {
 
   function handleLogout() {
     logout();
-    navigate("/");
+    navigate("/", { replace: true, state: null });
   }
 
   const initials = currentUser?.name
