@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import NavAdmin from "../../components/NavAdmin";
 import Footer from "../../components/Footer";
+import ModalCreateCategory from "../../components/ModalCreateCategory";
+import ModalEditCategory from "../../components/ModalEditCategory";
 
 const categories = [
   {
@@ -55,6 +58,9 @@ const categories = [
 ];
 
 function Categories() {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   return (
     <div className="min-h-screen bg-(--bg-color-body) font-['Public_Sans']">
       <NavAdmin />
@@ -83,7 +89,7 @@ function Categories() {
               <h2 className="font-['IBM_Plex_Mono'] text-xs text-(--font-color-gray-light) sm:text-sm">ROUTING TAXONOMY (7)</h2>
               <p className="text-xs leading-relaxed text-(--font-color-gray-light)">Categories route new reports to an agency and define their SLA window.</p>
             </div>
-            <button type="button" className="flex w-full items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 text-xs font-semibold text-(--font-color-white) sm:w-fit">
+            <button type="button" onClick={() => setIsCreateModalOpen(true)} className="flex w-full items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 text-xs font-semibold text-(--font-color-white) sm:w-fit">
               <img src="/icons/i-plus.svg" alt="Icon Plus" />
               Add category
             </button>
@@ -102,7 +108,7 @@ function Categories() {
                     <span className="whitespace-nowrap">{item.target} SLA</span>
                     <span className="whitespace-nowrap">{item.reports}</span>
                   </div>
-                  <button type="button" className="flex items-center gap-1 font-['IBM_Plex_Mono'] text-xs font-semibold text-(--font-color-green) hover:bg-gray-200 px-4 py-2 rounded-full">
+                  <button type="button" onClick={() => setSelectedCategory(item)} className="flex items-center gap-1 font-['IBM_Plex_Mono'] text-xs font-semibold text-(--font-color-green) hover:bg-gray-200 px-4 py-2 rounded-full">
                     <img src="/icons/i-pencil-green.svg" alt="Icon Pencil" />
                     Edit
                   </button>
@@ -113,6 +119,17 @@ function Categories() {
         </section>
       </main>
       <Footer />
+
+      <ModalCreateCategory
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
+
+      <ModalEditCategory
+        isOpen={selectedCategory !== null}
+        onClose={() => setSelectedCategory(null)}
+        category={selectedCategory}
+      />
     </div>
   );
 }

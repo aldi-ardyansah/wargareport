@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 function NavUser() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,23 +21,23 @@ function NavUser() {
 
   return (
     <header>
-      <nav className="fixed top-0 z-1000 flex w-full flex-col items-center justify-between gap-2.5 border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3 md:flex-row md:px-25">
-        <div className="flex w-full items-center justify-between md:w-auto">
+      <nav className="fixed top-0 z-1000 flex w-full flex-col items-center justify-between gap-2.5 border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3 lg:flex-row lg:px-25">
+        <div className="flex w-full items-center justify-between lg:w-auto">
           <div className="flex items-center gap-2">
             <img src="/icons/logo.svg" alt="Logo" />
             <Link className="font-['Fraunces'] text-lg font-bold text-(--font-color-black)" to="/">WargaReport</Link>
           </div>
-          <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+          <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden">
             <img src="/icons/i-hamburger.svg" alt="Icon Hamburger" />
           </button>
         </div>
-        <div className={`${isMenuOpen ? "flex" : "hidden"} w-full flex-row flex-wrap items-center justify-center gap-4 md:flex md:w-auto md:gap-8`}>
+        <div className={`${isMenuOpen ? "flex" : "hidden"} w-full flex-row flex-wrap items-center justify-center gap-4 lg:flex lg:w-auto lg:gap-8`}>
           <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/live-feed" onClick={() => setIsMenuOpen(false)}>Live Feed</Link>
           <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/track" onClick={() => setIsMenuOpen(false)}>Track</Link>
           <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/help" onClick={() => setIsMenuOpen(false)}>How it works</Link>
           <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/user/list-complaint" onClick={() => setIsMenuOpen(false)}>My Reports</Link>
         </div>
-        <div className={`${isMenuOpen ? "flex" : "hidden"} w-full flex-row flex-wrap items-center justify-center gap-4 md:flex md:w-auto`}>
+        <div className={`${isMenuOpen ? "flex" : "hidden"} w-full flex-row flex-wrap items-center justify-center gap-4 lg:flex lg:w-auto`}>
           <Link to="/user/notification" onClick={() => setIsMenuOpen(false)}>
             <img src="/icons/i-notifications.svg" alt="Icon Notifications" />
           </Link>

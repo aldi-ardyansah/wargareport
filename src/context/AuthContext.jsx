@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
     );
 
     if (existingUser) {
-      return { success: false, message: "Email sudah terdaftar." };
+      return { success: false, message: "Email is already registered." };
     }
 
     const newUser = {
@@ -62,7 +62,7 @@ export function AuthProvider({ children }) {
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
-    return { success: true, message: "Registrasi berhasil." };
+    return { success: true, message: "Registration successful." };
   }
 
   function login(email, password) {
@@ -73,10 +73,11 @@ export function AuthProvider({ children }) {
     );
 
     if (!user) {
-      return { success: false, message: "Email atau password salah." };
+      return { success: false, message: "Invalid email or password." };
     }
 
-    const { password: userPassword, ...safeUser } = user;
+    const safeUser = { ...user };
+    delete safeUser.password;
 
     setCurrentUser(safeUser);
     localStorage.setItem("currentUser", JSON.stringify(safeUser));
@@ -89,6 +90,71 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("currentUser");
   }
 
+  function updateProfile(profileData) {
+    if (!currentUser) {
+      return { success: false, message: "User is not logged in." };
+    }
+
+    const existingUser = users.find(
+      (user) =>
+        user.email.toLowerCase() === profileData.email.toLowerCase() &&
+        user.id !== currentUser.id
+    );
+
+    if (existingUser) {
+      return { success: false, message: "Email is already used by another account." };
+    }
+
+    const updatedUser = {
+      ...currentUser,
+      name: profileData.name,
+      email: profileData.email,
+      phone: profileData.phone,
+      nik: profileData.nik
+    };
+
+    const updatedUsers = users.map((user) =>
+      user.id === currentUser.id
+        ? { ...user, ...updatedUser }
+        : user
+    );
+
+    setUsers(updatedUsers);
+    setCurrentUser(updatedUser);
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+    return { success: true, message: "Profile updated successfully." };
+  }
+
+  function changePassword(currentPassword, newPassword) {
+    if (!currentUser) {
+      return { success: false, message: "User is not logged in." };
+    }
+
+    const user = users.find((user) => user.id === currentUser.id);
+
+    if (!user || user.password !== currentPassword) {
+      return { success: false, message: "Current password is incorrect." };
+    }
+
+    if (currentPassword === newPassword) {
+      return { success: false, message: "New password must be different from the current password." };
+    }
+
+    const updatedUsers = users.map((user) =>
+      user.id === currentUser.id
+        ? { ...user, password: newPassword }
+        : user
+    );
+
+    setUsers(updatedUsers);
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    return { success: true, message: "Password updated successfully." };
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -96,7 +162,9 @@ export function AuthProvider({ children }) {
         currentUser,
         register,
         login,
-        logout
+        logout,
+        updateProfile,
+        changePassword
       }}
     >
       {children}
@@ -104,6 +172,4 @@ export function AuthProvider({ children }) {
   );
 }
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export default AuthContext;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 function ModalLogin({ isOpen = false, onClose = () => { }, onSwitchToRegister = () => { } }) {
   const { login } = useAuth();
@@ -8,6 +8,7 @@ function ModalLogin({ isOpen = false, onClose = () => { }, onSwitchToRegister = 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   if (!isOpen) return null;
 
@@ -60,8 +61,10 @@ function ModalLogin({ isOpen = false, onClose = () => { }, onSwitchToRegister = 
                 <label className="font-['IBM_Plex_Mono'] text-xs font-medium tracking-wider text-(--font-color-gray)" htmlFor="login-password">PASSWORD</label>
                 <div className="flex min-w-0 items-center gap-3 rounded-xl border border-(--border-color-gray-light) bg-(--bg-color-white) px-3 py-2 focus-within:border-(--border-color-green)">
                   <img src="/icons/i-lock.svg" alt="Icon Lock" />
-                  <input className="min-w-0 w-full bg-transparent font-['Public_Sans'] text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type="password" id="login-password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                  <img className="shrink-0 cursor-pointer" src="/icons/i-eye.svg" alt="Icon Eye" />
+                  <input className="min-w-0 w-full bg-transparent font-['Public_Sans'] text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type={showPassword ? "text" : "password"} id="login-password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                  <button type="button" onClick={() => setShowPassword((prev) => !prev)} className="shrink-0">
+                    <img src={showPassword ? "/icons/i-eye-closed.svg" : "/icons/i-eye.svg"} alt="Toggle password visibility" />
+                  </button>
                 </div>
               </div>
               {error && <p className="text-sm text-(--font-color-red)">{error}</p>}

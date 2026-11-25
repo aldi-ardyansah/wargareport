@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 function NavAdmin() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,19 +21,19 @@ function NavAdmin() {
 
   return (
     <header>
-      <nav className="fixed top-0 z-1000 w-full border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3 sm:px-6 md:px-25">
-        <div className="relative mx-auto flex w-full flex-col items-center gap-3 md:grid md:grid-cols-3">
-          <div className="flex w-full items-center justify-between md:w-auto">
+      <nav className="fixed top-0 z-1000 w-full border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3 sm:px-6 lg:px-25">
+        <div className="relative mx-auto flex w-full flex-col items-center gap-3 lg:grid lg:grid-cols-3">
+          <div className="flex w-full items-center justify-between lg:w-auto">
             <Link to="/" className="flex items-center gap-2">
               <img src="/icons/logo.svg" alt="Logo" />
               <span className="font-['Fraunces'] font-bold text-(--font-color-black) text-lg">WargaReport</span>
             </Link>
-            <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+            <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden">
               <img src="/icons/i-hamburger.svg" alt="Icon Hamburger" />
             </button>
           </div>
-          <div className={`${isMenuOpen ? "flex" : "hidden"} order-2 w-full flex-row flex-wrap items-center justify-center gap-4 md:order-0 md:col-start-3 md:flex md:w-auto md:justify-end md:gap-6`}>
-            <Link to="/admin/escalation-desk" onClick={() => setIsMenuOpen(false)} className="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+          <div className={`${isMenuOpen ? "flex" : "hidden"} order-2 w-full flex-row flex-wrap items-center justify-center gap-4 lg:order-0 lg:col-start-3 lg:flex lg:w-auto lg:justify-end lg:gap-6`}>
+            <Link to="/admin/escalation-desk" onClick={() => setIsMenuOpen(false)} className="lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
               <div className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-3 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-white) sm:text-sm">
                 <img src="/icons/i-shield-white.svg" alt="Icon Shield" />
                 Admin Console

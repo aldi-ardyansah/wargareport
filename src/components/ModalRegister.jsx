@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 function ModalRegister({ isOpen = false, onClose = () => { }, onSwitchToLogin = () => { } }) {
   const { register } = useAuth();
@@ -10,6 +10,7 @@ function ModalRegister({ isOpen = false, onClose = () => { }, onSwitchToLogin = 
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   if (!isOpen) return null;
 
@@ -38,6 +39,7 @@ function ModalRegister({ isOpen = false, onClose = () => { }, onSwitchToLogin = 
     setPhone("");
     setNik("");
     setPassword("");
+    setShowPassword(false);
   }
 
   return (
@@ -90,8 +92,10 @@ function ModalRegister({ isOpen = false, onClose = () => { }, onSwitchToLogin = 
               <label className="font-['IBM_Plex_Mono'] text-xs font-medium tracking-wider text-(--font-color-gray)" htmlFor="register-password">PASSWORD *</label>
               <div className="flex items-center gap-2 rounded-xl border border-(--border-color-gray-light) bg-(--bg-color-white) px-3 py-2 focus-within:border-(--border-color-green)">
                 <img src="/icons/i-lock.svg" alt="Icon Lock" />
-                <input className="min-w-0 w-full bg-transparent text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type="password" id="register-password" placeholder="Create a password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <img className="shrink-0 cursor-pointer" src="/icons/i-eye.svg" alt="Icon Eye" />
+                <input className="min-w-0 w-full bg-transparent text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type={showPassword ? "text" : "password"} id="register-password" placeholder="Create a password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <button type="button" onClick={() => setShowPassword((prev) => !prev)} className="shrink-0">
+                  <img src={showPassword ? "/icons/i-eye-closed.svg" : "/icons/i-eye.svg"} alt="Toggle password visibility" />
+                </button>
               </div>
             </div>
             {error && <p className="text-sm text-(--font-color-red)">{error}</p>}
