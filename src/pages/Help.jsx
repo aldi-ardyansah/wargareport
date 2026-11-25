@@ -157,7 +157,7 @@ export default function Help() {
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl border border-(--border-color-red-light) bg-(--bg-color-red) p-4 sm:p-5">
+            <div className="rounded-2xl border border-(--border-color-red-light) bg-(--bg-color-red-light) p-4 sm:p-5">
               <div className="flex items-center gap-2 text-sm font-medium text-(--font-color-red)">
                 <img className="h-4 w-4 shrink-0" src="/icons/i-phone-call.svg" alt="" />
                 Is this an acute life-safety emergency?
