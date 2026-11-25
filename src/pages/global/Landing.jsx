@@ -1,11 +1,11 @@
 import { Link } from "react-router";
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import NavGlobal from "../../components/NavGlobal";
+import Footer from "../../components/Footer";
 
 function Landing() {
   return (
     <div className="min-h-screen bg-(--bg-color-body) font-['Public_Sans']">
-      <Nav />
+      <NavGlobal />
       <main className="mx-auto mt-10 w-[90%] px-4 md:px-9">
         <div className="flex flex-col gap-6 py-10 sm:py-12 md:py-16">
           <h1 className="w-full font-['Fraunces'] text-3xl font-semibold text-(--font-color-black) sm:text-4xl md:w-[65%] md:text-5xl">See something broken? Snap it. We push the city to fix it.</h1>

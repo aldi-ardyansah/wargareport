@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import NavLogin from "../components/NavUser";
-import Footer from "../components/Footer";
+import NavLogin from "../../components/NavUser";
+import Footer from "../../components/Footer";
 
 function Notification() {
   const [activeCategory, setActiveCategory] = useState("All");

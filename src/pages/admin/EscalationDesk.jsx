@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import NavAdmin from "../components/NavAdmin";
-import Footer from "../components/Footer";
-import Review from "../components/Review";
+import NavAdmin from "../../components/NavAdmin";
+import Footer from "../../components/Footer";
+import Review from "../../components/Review";
 
 function EscalationDesk() {
   const [isReviewOpen, setIsReviewOpen] = useState(false);

@@ -1,5 +1,5 @@
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import NavGlobal from "../../components/NavGlobal";
+import Footer from "../../components/Footer";
 
 export default function Help() {
   const statuses = [
@@ -112,7 +112,7 @@ export default function Help() {
 
   return (
     <div className="min-h-screen bg-(--bg-color-body) font-['Public_Sans']">
-      <Nav />
+      <NavGlobal />
       <main className="mx-auto mt-10 w-[90%] px-4 md:px-9">
         <div className="pt-10 md:pt-15">
           <span className="font-['IBM_Plex_Mono'] text-xs font-medium tracking-wider text-(--font-color-gray-light)">CITIZEN HELP</span>

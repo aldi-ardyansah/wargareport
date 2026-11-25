@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import Login from "./Login";
 import Register from "./Register";
 
-function Nav() {
+function NavGlobal() {
   const [activeModal, setActiveModal] = useState(null);
 
   return (
@@ -44,4 +44,4 @@ function Nav() {
   )
 }
 
-export default Nav;
+export default NavGlobal;

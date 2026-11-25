@@ -1,10 +1,10 @@
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import NavGlobal from "../../components/NavGlobal";
+import Footer from "../../components/Footer";
 
 export default function Track() {
   return (
     <div className="min-h-screen bg-(--bg-color-body) font-['Public_Sans']">
-      <Nav />
+      <NavGlobal />
       <main className="mx-auto mt-10 w-[90%] px-4 md:px-9">
         <div className="flex flex-col items-start gap-10 pt-15 lg:flex-row">
           <div className="w-full rounded-2xl border border-(--border-color-gray) bg-(--bg-color-white) p-4 sm:p-6 md:w-full md:p-8 lg:w-[56%]">

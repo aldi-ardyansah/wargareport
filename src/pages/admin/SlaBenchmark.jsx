@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import NavAdmin from "../components/NavAdmin";
-import Footer from "../components/Footer";
+import NavAdmin from "../../components/NavAdmin";
+import Footer from "../../components/Footer";
 
 const slaBenchmarks = [
   {

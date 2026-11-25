@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import NavLogin from "../components/NavUser";
-import Footer from "../components/Footer";
+import NavLogin from "../../components/NavUser";
+import Footer from "../../components/Footer";
 
 export default function Proof() {
   return (

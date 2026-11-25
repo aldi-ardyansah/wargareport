@@ -1,11 +1,11 @@
 import { Link } from "react-router";
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import NavGlobal from "../../components/NavGlobal";
+import Footer from "../../components/Footer";
 
 function DetailReport() {
   return (
     <div className="min-h-screen bg-(--bg-color-body) font-['Public_Sans']">
-      <Nav />
+      <NavGlobal />
       <main className="mx-auto mt-5 w-[90%] px-4 md:px-9">
         <div className="flex flex-col gap-5 pt-20">
           <div className="flex items-center justify-between gap-3">

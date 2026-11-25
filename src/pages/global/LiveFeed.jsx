@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import NavGlobal from "../../components/NavGlobal";
+import Footer from "../../components/Footer";
 
 function LiveFeed() {
   const [search, setSearch] = useState("");
@@ -146,7 +146,7 @@ function LiveFeed() {
 
   return (
     <div className="min-h-screen bg-(--bg-color-body) font-['Public_Sans']">
-      <Nav />
+      <NavGlobal />
       <main className="mx-auto mt-10 w-[90%] px-4 md:px-9">
         <div className="flex flex-col gap-6 pt-10 md:pt-12">
           <div className="flex flex-col gap-3">
