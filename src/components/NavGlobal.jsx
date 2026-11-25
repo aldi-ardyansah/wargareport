@@ -5,25 +5,30 @@ import Register from "./Register";
 
 function NavGlobal() {
   const [activeModal, setActiveModal] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header>
       <nav className="fixed top-0 z-1000 flex w-full flex-col items-center justify-between gap-2.5 border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3.75 md:flex-row md:px-25">
-        <div className="flex items-center gap-2">
-          <img src="/icons/logo.svg" alt="Logo" />
-          <Link className="font-['Fraunces'] text-[19px] font-bold text-(--font-color-black)" to="/">WargaReport</Link>
-          <a className="md:hidden"><img src="/icons/i-hamburger.svg" alt="Icon Hamburger" /></a>
+        <div className="flex w-full items-center justify-between md:w-auto">
+          <div className="flex items-center gap-2">
+            <img src="/icons/logo.svg" alt="Logo" />
+            <Link className="font-['Fraunces'] text-[19px] font-bold text-(--font-color-black)" to="/">WargaReport</Link>
+          </div>
+          <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+            <img src="/icons/i-hamburger.svg" alt="Icon Hamburger" />
+          </button>
         </div>
-        <div className="flex items-center gap-8">
-          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/live-feed">Live Feed</Link>
-          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/track">Track</Link>
-          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray) font-medium" to="/help">How it works</Link>
+        <div className={`${isMenuOpen ? "flex" : "hidden"} w-full flex-row items-center justify-center gap-4 md:flex md:w-auto md:gap-8`}>
+          <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/live-feed" onClick={() => setIsMenuOpen(false)}>Live Feed</Link>
+          <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/track" onClick={() => setIsMenuOpen(false)}>Track</Link>
+          <Link className="font-['Public_Sans'] text-xs font-medium text-(--font-color-gray) sm:text-sm" to="/help" onClick={() => setIsMenuOpen(false)}>How it works</Link>
         </div>
-        <div className="flex items-center gap-3">
-          <button type="button" onClick={() => setActiveModal("login")} className="flex items-center gap-2 rounded-full border border-none px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-gray)">
+        <div className={`${isMenuOpen ? "flex" : "hidden"} w-full flex-row items-center justify-center gap-3 md:flex md:w-auto`}>
+          <button type="button" onClick={() => { setActiveModal("login"); setIsMenuOpen(false); }} className="flex items-center gap-2 rounded-full border border-none px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-gray)">
             <img src="/icons/i-log-in.svg" alt="Icon Login" />Sign In
           </button>
-          <Link to="/user/topic" className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-white)">
+          <Link to="/user/topic" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-(--font-color-white)">
             <img src="/icons/i-plus.svg" alt="Icon Plus" />Report
           </Link>
         </div>
