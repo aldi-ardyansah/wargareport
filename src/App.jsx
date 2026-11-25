@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import Landing from "./pages/global/Landing";
 import LiveFeed from "./pages/global/LiveFeed";
 import Track from "./pages/global/Track";
@@ -26,29 +29,38 @@ import Categories from "./pages/admin/Categories";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/live-feed" element={<LiveFeed />} />
-        <Route path="/track" element={<Track />} />
-        <Route path="/help" element={<Help />} />
-        <Route path="/detail-report" element={<DetailReport />} />
-        <Route path="/not-found" element={<NotFound />} />
-        <Route path="user/topic" element={<Topic />} />
-        <Route path="user/location" element={<Location />} />
-        <Route path="user/proof" element={<Proof />} />
-        <Route path="user/review" element={<Review />} />
-        <Route path="user/receipt" element={<Receipt />} />
-        <Route path="user/notification" element={<Notification />} />
-        <Route path="user/list-complaint" element={<ListComplaint />} />
-        <Route path="user/profile" element={<Profile />} />
-        <Route path="user/notification-settings" element={<NotificationSettings />} />
-        <Route path="user/data-export" element={<DataExport />} />
-        <Route path="user/security" element={<Security />} />
-        <Route path="admin/escalation-desk" element={<EscalationDesk />} />
-        <Route path="admin/sla-benchmark" element={<SlaBenchmark />} />
-        <Route path="admin/categories" element={<Categories />} />
-        <Route path="*" element={<Navigate to="/not-found" replace />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/live-feed" element={<LiveFeed />} />
+          <Route path="/track" element={<Track />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/detail-report" element={<DetailReport />} />
+          <Route path="/not-found" element={<NotFound />} />
+
+          <Route element={<ProtectedRoute allowedRole="user" />}>
+            <Route path="/user/topic" element={<Topic />} />
+            <Route path="/user/location" element={<Location />} />
+            <Route path="/user/proof" element={<Proof />} />
+            <Route path="/user/review" element={<Review />} />
+            <Route path="/user/receipt" element={<Receipt />} />
+            <Route path="/user/notification" element={<Notification />} />
+            <Route path="/user/list-complaint" element={<ListComplaint />} />
+            <Route path="/user/profile" element={<Profile />} />
+            <Route path="/user/notification-settings" element={<NotificationSettings />} />
+            <Route path="/user/data-export" element={<DataExport />} />
+            <Route path="/user/security" element={<Security />} />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedRole="admin" />}>
+            <Route path="/admin/escalation-desk" element={<EscalationDesk />} />
+            <Route path="/admin/sla-benchmark" element={<SlaBenchmark />} />
+            <Route path="/admin/categories" element={<Categories />} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/not-found" replace />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

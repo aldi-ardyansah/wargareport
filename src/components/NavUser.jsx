@@ -1,16 +1,31 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "../context/AuthContext";
 
-function NavLogin() {
+function NavUser() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate("/");
+  }
+
+  const initials = currentUser?.name
+    ?.split(" ")
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
   return (
     <header>
-      <nav className="fixed top-0 z-1000 flex w-full flex-col items-center justify-between gap-2.5 border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3.75 md:flex-row md:px-25">
+      <nav className="fixed top-0 z-1000 flex w-full flex-col items-center justify-between gap-2.5 border-b border-(--border-color-gray) bg-(--bg-color-white) px-6 py-3 md:flex-row md:px-25">
         <div className="flex w-full items-center justify-between md:w-auto">
           <div className="flex items-center gap-2">
             <img src="/icons/logo.svg" alt="Logo" />
-            <Link className="font-['Fraunces'] text-[19px] font-bold text-(--font-color-black)" to="/">WargaReport</Link>
+            <Link className="font-['Fraunces'] text-lg font-bold text-(--font-color-black)" to="/">WargaReport</Link>
           </div>
           <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
             <img src="/icons/i-hamburger.svg" alt="Icon Hamburger" />
@@ -28,24 +43,24 @@ function NavLogin() {
           </Link>
           <div className="group relative">
             <span className="flex cursor-pointer items-center gap-2 rounded-full border border-(--border-color-gray) px-2 py-1">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border border-(--bg-color-green) bg-(--bg-color-green-light) font-['IBM_Plex_Mono'] text-xs font-medium text-(--font-color-green)">AA</div>
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border border-(--bg-color-green) bg-(--bg-color-green-light) font-['IBM_Plex_Mono'] text-xs font-medium text-(--font-color-green)">{initials}</div>
               <div className="flex flex-col">
-                <span className="font-['Public_Sans'] text-xs font-semibold text-(--font-color-black)">Aldi Ardyansah</span>
+                <span className="font-['Public_Sans'] text-xs font-semibold text-(--font-color-black)">{currentUser?.name}</span>
                 <span className="font-['IBM_Plex_Mono'] text-[10px] text-(--font-color-gray)">Citizen</span>
               </div>
               <img src="/icons/i-chevron-down.svg" alt="" />
             </span>
             <div className="invisible absolute right-0 top-full z-20 mt-2 w-55 rounded-xl border border-(--border-color-gray) bg-(--bg-color-white) opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
               <div className="flex flex-col gap-1 border-b border-(--border-color-gray) p-4">
-                <span className="font-['Public_Sans'] text-sm font-semibold text-(--font-color-black)">Aldi Ardyansah</span>
-                <span className="font-['IBM_Plex_Mono'] text-[10px] text-(--font-color-gray)">aldi@wargareport.id</span>
+                <span className="font-['Public_Sans'] text-sm font-semibold text-(--font-color-black)">{currentUser?.name}</span>
+                <span className="font-['IBM_Plex_Mono'] text-[10px] text-(--font-color-gray)">{currentUser?.email}</span>
               </div>
               <Link to="/user/list-complaint" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 border-b border-(--border-color-gray) px-4 py-3 font-['Public_Sans'] text-xs text-(--font-color-gray) hover:bg-(--bg-color-light-gray)">
                 <img src="/icons/i-user.svg" alt="" />My Filed Reports
               </Link>
-              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 px-4 py-3 font-['Public_Sans'] text-xs text-(--font-color-red) hover:bg-(--bg-color-light-red)">
+              <button type="button" onClick={handleLogout} className="flex w-full items-center gap-2 px-4 py-3 text-left font-['Public_Sans'] text-xs text-(--font-color-red) hover:bg-(--bg-color-light-red)">
                 <img src="/icons/i-log-out.svg" alt="" />Sign Out
-              </Link>
+              </button>
             </div>
           </div>
           <Link className="flex items-center gap-2 rounded-full bg-(--bg-color-green) px-4 py-2 font-['Public_Sans'] text-xs font-semibold text-white" to="/user/topic" onClick={() => setIsMenuOpen(false)}>
@@ -57,4 +72,4 @@ function NavLogin() {
   )
 }
 
-export default NavLogin;
+export default NavUser;

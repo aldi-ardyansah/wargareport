@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import NavAdmin from "../../components/NavAdmin";
 import Footer from "../../components/Footer";
-import Review from "../../components/Review";
+import ModalReview from "../../components/ModalReview";
 
 function EscalationDesk() {
   const [isReviewOpen, setIsReviewOpen] = useState(false);
@@ -86,7 +86,7 @@ function EscalationDesk() {
           </div>
         </section>
       </main>
-      <Review isOpen={isReviewOpen} onClose={() => setIsReviewOpen(false)} />
+      <ModalReview isOpen={isReviewOpen} onClose={() => setIsReviewOpen(false)} />
       <Footer />
     </div>
   );

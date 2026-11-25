@@ -1,5 +1,34 @@
-function Login({ isOpen = false, onClose = () => { }, onSwitchToRegister = () => { } }) {
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useAuth } from "../context/AuthContext";
+
+function ModalLogin({ isOpen = false, onClose = () => { }, onSwitchToRegister = () => { } }) {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   if (!isOpen) return null;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const result = login(email, password);
+
+    if (!result.success) {
+      setError(result.message);
+      return;
+    }
+
+    onClose();
+
+    navigate(
+      result.user.role === "admin"
+        ? "/admin/escalation-desk"
+        : "/user/topic"
+    );
+  }
 
   return (
     <header>
@@ -19,22 +48,23 @@ function Login({ isOpen = false, onClose = () => { }, onSwitchToRegister = () =>
               <span className="flex flex-1 items-center justify-center rounded-full bg-(--bg-color-green) px-2 py-3 text-center text-sm font-semibold text-(--font-color-white)">Sign In Existing Account</span>
               <button type="button" onClick={onSwitchToRegister} className="flex-1 rounded-full bg-(--bg-color-body) px-2 py-3 text-center text-sm text-(--font-color-gray)">Register as Citizen</button>
             </div>
-            <form className="mt-5 flex flex-col gap-3">
+            <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-3">
               <div className="flex flex-col gap-2">
                 <label className="font-['IBM_Plex_Mono'] text-xs font-medium tracking-wider text-(--font-color-gray)" htmlFor="login-email">EMAIL ADDRESS</label>
                 <div className="flex min-w-0 items-center gap-3 rounded-xl border border-(--border-color-gray-light) bg-(--bg-color-white) px-3 py-2 focus-within:border-(--border-color-green)">
                   <img src="/icons/i-email.svg" alt="Icon Email" />
-                  <input className="min-w-0 w-full bg-transparent font-['Public_Sans'] text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type="email" id="login-email" placeholder="Enter your Email" required />
+                  <input className="min-w-0 w-full bg-transparent font-['Public_Sans'] text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type="email" id="login-email" placeholder="Enter your Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-['IBM_Plex_Mono'] text-xs font-medium tracking-wider text-(--font-color-gray)" htmlFor="login-password">PASSWORD</label>
                 <div className="flex min-w-0 items-center gap-3 rounded-xl border border-(--border-color-gray-light) bg-(--bg-color-white) px-3 py-2 focus-within:border-(--border-color-green)">
                   <img src="/icons/i-lock.svg" alt="Icon Lock" />
-                  <input className="min-w-0 w-full bg-transparent font-['Public_Sans'] text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type="password" id="login-password" placeholder="Enter your password" required />
+                  <input className="min-w-0 w-full bg-transparent font-['Public_Sans'] text-sm text-(--font-color-black) outline-none placeholder:text-(--font-color-gray-light)" type="password" id="login-password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                   <img className="shrink-0 cursor-pointer" src="/icons/i-eye.svg" alt="Icon Eye" />
                 </div>
               </div>
+              {error && <p className="text-sm text-(--font-color-red)">{error}</p>}
               <button type="submit" className="flex w-full items-center justify-center gap-2 rounded-full bg-(--bg-color-green) px-5 py-3 font-['Public_Sans'] text-sm font-semibold text-(--font-color-white) hover:opacity-90">
                 Sign In<img src="/icons/i-arrow-right.svg" alt="Icon Arrow Right" />
               </button>
@@ -46,4 +76,4 @@ function Login({ isOpen = false, onClose = () => { }, onSwitchToRegister = () =>
   );
 }
 
-export default Login;
+export default ModalLogin;

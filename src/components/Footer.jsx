@@ -11,10 +11,10 @@ function Footer() {
       <div className="flex min-w-0 flex-1 flex-col gap-4">
         <div className="font-['IBM_Plex_Mono'] text-[11px] font-medium tracking-widest text-(--font-color-green)">CITIZENS</div>
         <div className="flex flex-col gap-2.5">
-          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray)" to="/proof">File a report</Link>
+          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray)" to="/user/proof">File a report</Link>
           <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray)" to="/track">Track complaint</Link>
           <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray)" to="/live-feed">Public reports registry</Link>
-          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray)" to="/list-complaint">My filing history</Link>
+          <Link className="font-['Public_Sans'] text-sm text-(--font-color-gray)" to="/user/list-complaint">My filing history</Link>
         </div>
       </div>
       <div className="flex min-w-0 flex-1 flex-col gap-4">

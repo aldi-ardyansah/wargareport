@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 
-function Review({ isOpen, onClose }) {
+function ModalReview({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-2000 flex justify-end bg-black/50">
-      <div className="flex h-full w-full flex-col overflow-y-auto border-l border-(--border-color-gray) bg-(--bg-color-white) sm:max-w-105">
+      <div className="flex h-full w-[90%] flex-col overflow-y-auto border-l border-(--border-color-gray) bg-(--bg-color-white) sm:w-full sm:max-w-105">
         <div className="sticky top-0 flex shrink-0 items-center justify-between border-b border-(--border-color-gray) bg-(--bg-color-gray) px-4 py-4 sm:px-5 sm:py-5">
           <div className="flex flex-col gap-1">
             <span className="font-['IBM_Plex_Mono'] text-xs tracking-widest text-(--font-color-gray-light)">ESCALATION DESK</span>
@@ -81,4 +81,4 @@ function Review({ isOpen, onClose }) {
   );
 }
 
-export default Review;
+export default ModalReview;

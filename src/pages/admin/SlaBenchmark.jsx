@@ -63,7 +63,7 @@ function SlaBenchmark() {
             Escalation Desk
             <span className="flex h-4 w-4 items-center justify-center rounded-full bg-(--bg-color-green)/10 font-['IBM_Plex_Mono'] text-xs text-(--font-color-green)">1</span>
           </Link>
-          <Link to="/admin/sla-benchmarks" className="rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-4 py-2 text-xs font-semibold text-(--font-color-white)">SLA Benchmarks</Link>
+          <Link to="/admin/sla-benchmark" className="rounded-full border border-(--border-color-green) bg-(--bg-color-green) px-4 py-2 text-xs font-semibold text-(--font-color-white)">SLA Benchmarks</Link>
           <Link to="/admin/categories" className="rounded-full px-4 py-2 text-xs font-medium text-(--font-color-gray)">Categories</Link>
           <Link to="/admin/agencies" className="rounded-full px-4 py-2 text-xs font-medium text-(--font-color-gray)">Agencies</Link>
           <Link to="/admin/officer-accounts" className="rounded-full px-4 py-2 text-xs font-medium text-(--font-color-gray)">Officer Accounts</Link>

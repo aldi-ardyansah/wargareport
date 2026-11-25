@@ -158,7 +158,7 @@ function LiveFeed() {
                 <div className="flex items-center gap-2 rounded-full bg-(--font-color-green) px-4 py-2 text-xs font-semibold text-white">
                   <img src="/icons/i-list.svg" alt="Icon List" />Feed
                 </div>
-                <div className="flex items-center gap-2 rounded-full px-4 py-2 text-xs text-(--font-color-gray)">
+                <div className="flex items-center gap-2 rounded-full px-4 py-2 text-xs text-(--font-color-gray) hover:bg-(--bg-color-gray)">
                   <img src="/icons/i-map.svg" alt="Icon Map" />Map
                 </div>
               </div>
@@ -170,7 +170,7 @@ function LiveFeed() {
           </div>
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
-              <label key={category.label} className="flex cursor-pointer items-center gap-2 rounded-full border border-(--border-color-gray) bg-(--bg-color-white) px-3 py-2 text-xs text-(--font-color-gray) has-checked:border-(--font-color-green) has-checked:bg-(--font-color-green) has-checked:font-semibold has-checked:text-white sm:px-4">
+              <label key={category.label} className="flex cursor-pointer items-center gap-2 rounded-full border border-(--border-color-gray) bg-(--bg-color-white) px-3 py-2 text-xs text-(--font-color-gray) transition-colors hover:bg-(--bg-color-gray) has-checked:border-(--font-color-green) has-checked:bg-(--font-color-green) has-checked:font-semibold has-checked:text-white sm:px-4">
                 <input className="hidden" type="radio" name="category" checked={selectedCategory === (category.icon === null ? "All" : category.label)} onChange={() => setSelectedCategory(category.icon === null ? "All" : category.label)} />
                 {category.icon && <img src={`/icons/${category.icon}`} alt="" />}
                 {category.label}
@@ -181,7 +181,7 @@ function LiveFeed() {
             <div className="flex flex-wrap items-center gap-1 rounded-2xl border border-(--border-color-gray) bg-(--bg-color-white) p-1 sm:rounded-full">
               <span className="px-3 py-2 font-['IBM_Plex_Mono'] text-xs text-(--font-color-gray-light)">STATUS:</span>
               {statuses.map((status) => (
-                <label key={status} className="cursor-pointer rounded-full px-3 py-2 text-xs text-(--font-color-gray) has-checked:bg-(--font-color-green) has-checked:font-semibold has-checked:text-white sm:px-4">
+                <label key={status} className="cursor-pointer rounded-full px-3 py-2 text-xs text-(--font-color-gray) transition-colors hover:bg-(--bg-color-gray) has-checked:bg-(--font-color-green) has-checked:font-semibold has-checked:text-white sm:px-4">
                   <input className="hidden" type="radio" name="status" checked={selectedStatus === status} onChange={() => setSelectedStatus(status)} />
                   {status}
                 </label>
@@ -226,7 +226,7 @@ function LiveFeed() {
                   <img src="/icons/i-list-green.svg" alt="Icon List" />{report.proof}
                 </span>
                 <span className="whitespace-nowrap font-['IBM_Plex_Mono'] text-xs text-(--font-color-gray-light)">{report.date}</span>
-                <Link className="flex items-center gap-1 whitespace-nowrap text-xs font-semibold text-(--font-color-green)" to={report.link}>
+                <Link className="flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-xs font-semibold text-(--font-color-green) transition-colors hover:bg-(--bg-color-gray)" to={report.link}>
                   Track<img src="/icons/i-arrow-right-green.svg" alt="Icon Arrow Right" />
                 </Link>
               </div>
